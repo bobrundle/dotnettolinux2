@@ -1,0 +1,9 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0
+
+SHELL ["/bin/bash","-c"]
+ENV DOTNET_NOLOGO 1
+RUN adduser --gid 100 tester
+WORKDIR /home/tester
+COPY bin/Release/net5.0/linux-x64 .
+
+CMD ["dotnet","vstest","FileSupportTests.dll"]
